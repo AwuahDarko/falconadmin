@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class Utils {
-  static String url = "http://10.0.2.2:4000"; // http://192.168.43.111:4000 'http://10.0.2.2:4000' http://api.piuniversal.com:4000
-  static String token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsImVtYWlsIjoiZmFsY29uQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoia2F6YWFuIEdyYW50Iiwic3RvcmVfaWQiOjF9LCJpYXQiOjE1ODgyNDM0NTB9.gIL_VehF26xLnm_bTvMM5uS8E0e-bffmrlDNjdP2oR8';
+  static String url = "http://api.piuniversal.com:4000"; // http://192.168.43.111:4000 'http://10.0.2.2:4000' http://api.piuniversal.com:4000
+  static String token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsImVtYWlsIjoiZmFsY29uQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoia2F6YWFuIEdyYW50Iiwic3RvcmVfaWQiOjF9LCJpYXQiOjE1ODg3MDY5MjZ9.xPp1d0DHMRCgHHrYq9qGJsCQMGR2AfE3trx7ckp2dys';
 
   static Future<bool> showStatusAndWaitForAction(
       BuildContext context, bool status, String message) {

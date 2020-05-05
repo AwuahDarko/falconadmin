@@ -16,6 +16,7 @@ class MenuPage extends StatelessWidget {
   ProgressDialog _progressDialog;
   @override
   Widget build(BuildContext context) {
+    _getCharge();
     _progressDialog = Utils.initializeProgressDialog(context);
     return Scaffold(
         appBar: AppBar(
@@ -90,8 +91,12 @@ class MenuPage extends StatelessWidget {
             ),
             actions: <Widget>[
               FlatButton(
-                child: Text("Ok", style: TextStyle(color: Colors.green),),
+                child: Text("Save", style: TextStyle(color: Colors.green),),
                 onPressed: () => Navigator.pop(context, true),
+              ),
+              FlatButton(
+                child: Text("Cancel", style: TextStyle(color: Colors.red[300]),),
+                onPressed: () => Navigator.pop(context, false),
               ),
             ],
           );
@@ -113,4 +118,23 @@ class MenuPage extends StatelessWidget {
       return false;
     }
   }
+
+  Future<bool> _getCharge() async {
+    String url = Utils.url + "/api/admin/get";
+print('called....');
+    var res = await http.get(url,
+        headers: {
+          'Authorization': Utils.token,
+          'Content-Type': 'application/json'
+        });
+
+    if (res.statusCode == 200 || res.statusCode == 201) {
+      Map<String, dynamic> map = jsonDecode(res.body);
+      controller.text = map['discount'].toStringAsFixed(2);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
