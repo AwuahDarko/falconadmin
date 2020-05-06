@@ -14,6 +14,7 @@ import 'package:progress_dialog/progress_dialog.dart';
 class MenuPage extends StatelessWidget {
 
   ProgressDialog _progressDialog;
+  String discount = '';
   @override
   Widget build(BuildContext context) {
     _getCharge();
@@ -56,6 +57,7 @@ class MenuPage extends StatelessWidget {
                 child: RaisedButton(
                   child: Text("Distributor Charges"),
                   onPressed: () async {
+		controller.text = discount;
                    bool value = await _amountDialog(context);
                    if(value == true){
                      _progressDialog.show();
@@ -130,7 +132,7 @@ print('called....');
 
     if (res.statusCode == 200 || res.statusCode == 201) {
       Map<String, dynamic> map = jsonDecode(res.body);
-      controller.text = map['discount'].toStringAsFixed(2);
+      discount = map['discount'].toStringAsFixed(2);
       return true;
     } else {
       return false;
